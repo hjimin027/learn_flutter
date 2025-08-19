@@ -1,4 +1,4 @@
-import 'package:contact/screen/column/column_practice.dart';
+import 'package:contact/screen/column/column_practice_screen.dart';
 import 'package:contact/screen/column/column_screen.dart';
 import 'package:contact/screen/container/container_practice_screen.dart';
 import 'package:contact/screen/container/container_screen.dart';
@@ -36,7 +36,7 @@ class ButtonScreen extends StatelessWidget {
             SizedBox(height: 10),
             ElevatedButton(onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ColumnPractice();
+                return ColumnPracticeScreen();
               },));
             }, child: Text("Column_Practice")),
             SizedBox(height: 10),

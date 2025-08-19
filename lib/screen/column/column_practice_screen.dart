@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ColumnPractice extends StatelessWidget {
-  const ColumnPractice({super.key});
+class ColumnPracticeScreen extends StatelessWidget {
+  const ColumnPracticeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
