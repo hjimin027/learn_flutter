@@ -2,6 +2,7 @@ import 'package:contact/screen/column/column_practice_screen.dart';
 import 'package:contact/screen/column/column_screen.dart';
 import 'package:contact/screen/container/container_practice_screen.dart';
 import 'package:contact/screen/container/container_screen.dart';
+import 'package:contact/screen/image/image_screen.dart';
 import 'package:contact/screen/row/column_row_practice_screen.dart';
 import 'package:contact/screen/row/row_practice_screen.dart';
 import 'package:contact/screen/row/row_screen.dart';
@@ -74,6 +75,15 @@ class ButtonScreen extends StatelessWidget {
                 return TextPractice();
               },));
             }, child: Text("Text Practice")),
+            SizedBox(height: 10),
+            SizedBox(height: 10),
+            SizedBox(height: 10),
+
+            ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return ImageScreen();
+              },));
+            }, child: Text("Image")),
           ],
 
         ),
