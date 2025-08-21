@@ -7,6 +7,8 @@ import 'package:contact/screen/image/image_screen.dart';
 import 'package:contact/screen/row/column_row_practice_screen.dart';
 import 'package:contact/screen/row/row_practice_screen.dart';
 import 'package:contact/screen/row/row_screen.dart';
+import 'package:contact/screen/stack/stack_practice_screen.dart';
+import 'package:contact/screen/stack/stack_screen.dart';
 import 'package:contact/screen/text/text_practice.dart';
 import 'package:contact/screen/text/text_screen.dart';
 import 'package:flutter/material.dart';
@@ -91,6 +93,21 @@ class ButtonScreen extends StatelessWidget {
                 return ImagePracticeScreen();
               },));
             }, child: Text("Image Practice")),
+
+            SizedBox(height: 10),
+            SizedBox(height: 10),
+            SizedBox(height: 10),
+
+            ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return StackScreen();
+              },));
+            }, child: Text("Stack")),
+            ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return StackPracticeScreen();
+              },));
+            }, child: Text("Stack Practice")),
           ],
 
         ),
