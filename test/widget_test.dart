@@ -10,21 +10,21 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:contact/main.dart';
 
+import 'collections.dart';
+import 'conditional.dart';
+import 'method.dart';
+
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  Method();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  Collections collection = Collections();
+  collection.listAdd();
+  collection.listRemove();
+  collection.mapController();
+  collection.setController();
+  collection.practice();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  Conditional conditional = Conditional();
+  conditional.practiceIf(95);
+  conditional.practiceSwitch(72);
 }
