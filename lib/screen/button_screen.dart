@@ -5,6 +5,8 @@ import 'package:contact/screen/container/container_screen.dart';
 import 'package:contact/screen/row/column_row_practice_screen.dart';
 import 'package:contact/screen/row/row_practice_screen.dart';
 import 'package:contact/screen/row/row_screen.dart';
+import 'package:contact/screen/text/text_practice.dart';
+import 'package:contact/screen/text/text_screen.dart';
 import 'package:flutter/material.dart';
 
 class ButtonScreen extends StatelessWidget {
@@ -58,6 +60,20 @@ class ButtonScreen extends StatelessWidget {
                 return ColumnRowPracticeScreen();
               },));
             }, child: Text("Column Row Practice")),
+            SizedBox(height: 10),
+            SizedBox(height: 10),
+            SizedBox(height: 10),
+            ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return TextScreen();
+              },));
+            }, child: Text("Text")),
+            SizedBox(height: 10),
+            ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return TextPractice();
+              },));
+            }, child: Text("Text Practice")),
           ],
 
         ),
