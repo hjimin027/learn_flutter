@@ -6,3 +6,5 @@
 프린트 생성 단축키: `sout`, `soutm`
 
 커서가 있는 줄 복사: alt + d
+
+iter: for (var _o_ in _values_)

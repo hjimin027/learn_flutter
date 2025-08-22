@@ -12,19 +12,22 @@
 
 import 'collections.dart';
 import 'conditional.dart';
+import 'for_loop.dart';
 import 'method.dart';
 
 void main() {
-  Method();
+  // Method();
+  //
+  // Collections collection = Collections();
+  // collection.listAdd();
+  // collection.listRemove();
+  // collection.mapController();
+  // collection.setController();
+  // collection.practice();
+  //
+  // Conditional conditional = Conditional();
+  // conditional.practiceIf(95);
+  // conditional.practiceSwitch(72);
 
-  Collections collection = Collections();
-  collection.listAdd();
-  collection.listRemove();
-  collection.mapController();
-  collection.setController();
-  collection.practice();
-
-  Conditional conditional = Conditional();
-  conditional.practiceIf(95);
-  conditional.practiceSwitch(72);
+  ForLoop();
 }
