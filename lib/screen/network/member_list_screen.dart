@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 // 멤버 목록 조회
 import 'package:flutter/material.dart';
 
@@ -9,8 +10,16 @@ class MemberListScreen extends StatefulWidget {
 }
 
 class _MemberListScreenState extends State<MemberListScreen> {
+  Dio dio = Dio(BaseOptions(baseUrl: "https://9d8cdaee67f2.ngrok-free.app"));
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("회원 목록 조회"),),);
+    return Scaffold(appBar: AppBar(title: Text("회원 목록 조회"),),
+      body: Column(children: [
+        ElevatedButton(onPressed: () {
+          dio.get('/api/v1/member/all');
+        }, child: Text('data'))
+      ],),
+    );
   }
 }
