@@ -7,12 +7,15 @@ import 'package:contact/screen/image/image_screen.dart';
 import 'package:contact/screen/row/column_row_practice_screen.dart';
 import 'package:contact/screen/row/row_practice_screen.dart';
 import 'package:contact/screen/row/row_screen.dart';
+import 'package:contact/screen/scrollview/listview_builder_screen.dart';
+import 'package:contact/screen/scrollview/listview_practice_screen.dart';
+import 'package:contact/screen/scrollview/listview_screen.dart';
+import 'package:contact/screen/scrollview/scrollview_practice_screen.dart';
+import 'package:contact/screen/scrollview/scrollview_screen.dart';
 import 'package:contact/screen/stack/stack_practice_screen.dart';
 import 'package:contact/screen/stack/stack_screen.dart';
 import 'package:contact/screen/text/text_practice.dart';
 import 'package:contact/screen/text/text_screen.dart';
-import 'package:contact/scrollview/scrollview_practice_screen.dart';
-import 'package:contact/scrollview/scrollview_screen.dart';
 import 'package:flutter/material.dart';
 
 class ButtonScreen extends StatelessWidget {
@@ -127,6 +130,10 @@ class ButtonScreen extends StatelessWidget {
                   return ScrollviewPracticeScreen();
                 },));
               }, child: Text("Scrollview Practice")),
+              SizedBox(height: 10,),
+              button(context, ListviewScreen(), "Listview"),
+              button(context, ListviewBuilderScreen(), "ListView Builder"),
+              button(context, ListviewPracticeScreen(), "Listview Practice")
             ],
 
           ),
@@ -134,4 +141,11 @@ class ButtonScreen extends StatelessWidget {
       ),
     );
   }
+
+
+  Widget button(BuildContext context, Widget child, String name) => ElevatedButton(onPressed: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return child;
+      },));
+    }, child: Text(name));
 }
