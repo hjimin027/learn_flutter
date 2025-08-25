@@ -18,9 +18,14 @@ class _StatefulScreenState extends State<StatefulScreen> {
       body: Column(
         children: [
           Text("Count : $count"),
-          TextButton(onPressed: () {
-            count++;
-          }, child: Text("Count up")),
+          TextButton(
+            onPressed: () {
+              count++;
+              setState(() {});
+            },
+            child: Text("Count up"),
+          ),
+
           InnerState(count: count)
         ],
       ),
