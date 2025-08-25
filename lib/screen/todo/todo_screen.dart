@@ -31,17 +31,25 @@ class _TodoScreenState extends State<TodoScreen> {
           child: ListView.separated(itemBuilder: (context, index) {
             var model = todoList[index];
             return Row(children: [
-              Checkbox(value: true, onChanged: (value) {
-
+              Checkbox(value: model.checked, onChanged: (value) {
+                // setState: 상태가 변경되었음을 알려줌 -> build 재실행 (변경되면 화면 업데이트)
+                setState(() {
+                  // model.checked = value!; 두 방법 둘 중 하나
+                  model.checked = !model.checked;
+                });
               },),
-              Expanded(child: Text("내용")),
+              Expanded(child: Text(model.name)),
               IconButton(onPressed: () {
-
+                setState(() {
+                  // print("removed index: $index"); 삭제되는 인덱스 확인용
+                  todoList.removeAt(index);
+                });
               }, icon: Icon(Icons.delete))
             ],);
           }, separatorBuilder: (context, index) {
             return Container(height: 2, color: Colors.grey,);
-          }, itemCount: 5),
+          }, itemCount: todoList.length),
+          // itemCount: 인덱스로 접근. 하드코딩ㄴㄴ todoList.length로 변경
         )
       ],),
     );
