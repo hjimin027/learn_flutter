@@ -4,6 +4,7 @@ import 'package:contact/screen/container/container_practice_screen.dart';
 import 'package:contact/screen/container/container_screen.dart';
 import 'package:contact/screen/image/image_practice_screen.dart';
 import 'package:contact/screen/image/image_screen.dart';
+import 'package:contact/screen/navigator/navigator_screen.dart';
 import 'package:contact/screen/row/column_row_practice_screen.dart';
 import 'package:contact/screen/row/row_practice_screen.dart';
 import 'package:contact/screen/row/row_screen.dart';
@@ -14,6 +15,7 @@ import 'package:contact/screen/scrollview/scrollview_practice_screen.dart';
 import 'package:contact/screen/scrollview/scrollview_screen.dart';
 import 'package:contact/screen/stack/stack_practice_screen.dart';
 import 'package:contact/screen/stack/stack_screen.dart';
+import 'package:contact/screen/stateful/stateful_screen.dart';
 import 'package:contact/screen/text/text_practice.dart';
 import 'package:contact/screen/text/text_screen.dart';
 import 'package:flutter/material.dart';
@@ -133,7 +135,13 @@ class ButtonScreen extends StatelessWidget {
               SizedBox(height: 10,),
               button(context, ListviewScreen(), "Listview"),
               button(context, ListviewBuilderScreen(), "ListView Builder"),
-              button(context, ListviewPracticeScreen(), "Listview Practice")
+              button(context, ListviewPracticeScreen(), "Listview Practice"),
+              SizedBox(height: 10,),
+              SizedBox(height: 10,),
+              SizedBox(height: 10,),
+              button(context, StatefulScreen(), "Stateful"),
+              SizedBox(height: 20,),
+              button(context, NavigatorScreen(), "Navigator")
             ],
 
           ),
