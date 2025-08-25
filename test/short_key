@@ -6,8 +6,12 @@
 
 프린트 생성 단축키: `sout`, `soutm`
 
-커서가 있는 줄 복사: alt + d
+커서가 있는 줄 복사: ctrl(window)/alt(mac) + d
+커서가 있는 줄 위아래로 이동: alt + shift + 방향키
 
 iter: for (var _o_ in _values_)
 
 파일 검색: cmd/alt + e
+
+클래스 검색: ctrl + n
+      mac: command + o
