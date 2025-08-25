@@ -9,6 +9,7 @@ class TodoScreen extends StatefulWidget {
 }
 
 class _TodoScreenState extends State<TodoScreen> {
+  TextEditingController controller = TextEditingController();
   List<TodoModel> todoList = [
     TodoModel("운동하기", false),
     TodoModel("공부하기", true),
@@ -21,10 +22,18 @@ class _TodoScreenState extends State<TodoScreen> {
     return Scaffold(appBar: AppBar(title: Text("ToDo"),),
       body: Column(children: [
         Row(children: [
-          Expanded(child: TextFormField()), //Expanded: 현재 주어진 영역을 가로로 꽉 채우기
-          TextButton(onPressed: () {
-
-          }, child: Text("등록"))
+          Expanded(child: TextFormField(controller: controller)), // Expanded: 현재 남은 가로 공간 다 차지
+          TextButton(
+            onPressed: () {
+              /// todoList에 새로운 TodoModel 추가
+              print(controller.text);
+              // TodoModel todoModel = TodoModel(controller.text, false);
+              // var todoModel = TodoModel(controller.text, false);
+              // todoList.add(todoModel);
+              todoList.add(TodoModel(controller.text, false));
+              setState(() {});
+            },
+            child: Text("등록"),)
         ],),
         // Column 안에 스크롤이 있는 위젯이 있으면 -> 높이값을 설정해줘야 함
         Expanded(
