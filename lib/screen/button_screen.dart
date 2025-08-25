@@ -5,6 +5,7 @@ import 'package:contact/screen/container/container_screen.dart';
 import 'package:contact/screen/image/image_practice_screen.dart';
 import 'package:contact/screen/image/image_screen.dart';
 import 'package:contact/screen/navigator/navigator_screen.dart';
+import 'package:contact/screen/network/network_screen.dart';
 import 'package:contact/screen/row/column_row_practice_screen.dart';
 import 'package:contact/screen/row/row_practice_screen.dart';
 import 'package:contact/screen/row/row_screen.dart';
@@ -144,7 +145,9 @@ class ButtonScreen extends StatelessWidget {
               SizedBox(height: 20,),
               button(context, NavigatorScreen(), "Navigator"),
               SizedBox(height: 30,),
-              button(context, TodoScreen(), "ToDo")
+              button(context, TodoScreen(), "ToDo"),
+              SizedBox(height: 30,),
+              button(context, NetworkScreen(), "Network")
             ],
 
           ),
