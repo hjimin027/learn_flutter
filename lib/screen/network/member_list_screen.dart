@@ -26,7 +26,9 @@ class _MemberListScreenState extends State<MemberListScreen> {
         }, child: Text('data')),
         
         ElevatedButton(onPressed: () {
-          dio2.get("");
+          dio2.get("").then((value) {
+            print(value);
+          },);
         }, child: Text("Get JSON"))
       ],),
     );
