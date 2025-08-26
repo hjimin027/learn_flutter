@@ -10,7 +10,12 @@ class MemberListScreen extends StatefulWidget {
 }
 
 class _MemberListScreenState extends State<MemberListScreen> {
-  Dio dio = Dio(BaseOptions(baseUrl: "https://9d8cdaee67f2.ngrok-free.app"));
+  Dio dio = Dio(BaseOptions(baseUrl: "https://d0a701c36a9e.ngrok-free.app"));
+  // https://d0a701c36a9e.ngrok-free.app
+  // https://9d8cdaee67f2.ngrok-free.app
+
+  Dio dio2 = Dio(BaseOptions(baseUrl: "https://online-lecture-data.s3.ap-northeast-2.amazonaws.com/data.json"));
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,11 @@ class _MemberListScreenState extends State<MemberListScreen> {
       body: Column(children: [
         ElevatedButton(onPressed: () {
           dio.get('/api/v1/member/all');
-        }, child: Text('data'))
+        }, child: Text('data')),
+        
+        ElevatedButton(onPressed: () {
+          dio2.get("");
+        }, child: Text("Get JSON"))
       ],),
     );
   }
