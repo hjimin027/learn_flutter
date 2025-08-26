@@ -1,3 +1,35 @@
+class JsonModel {
+  String id;
+  int number;
+  Info? info;
+  List<Framework> frameworks;
+
+  JsonModel(this.id, this.number, this.info, this.frameworks);
+
+  factory JsonModel.fromJson(Map<String, dynamic> json) {
+    /// (json['framework'] as Iterable)
+    // (json['framework'] as Iterable).map((e) {
+    //   return Framework.fromJson(e);
+    // }).toList();
+    // json['framework'].map((e) => Framework.fromJson(e)).toList();
+    json['framework'].map((e) => Framework.fromJson(e)).toList();
+
+    return JsonModel(
+      json['id'] ?? '',
+      json['number'] ?? 0,
+      json['info'] == null ? null : Info.fromJson(json['info']),
+      json['framework'] == null
+          ? []
+          : (json['framework'] as Iterable).map((e) => Framework.fromJson(e)).toList(),
+    );
+  }
+
+  @override
+  String toString() {
+    return 'JsonModel{id: $id, number: $number, info: $info, frameworks: $frameworks}';
+  }
+}
+
 class Info {
   int age;
   double weight;
@@ -11,7 +43,9 @@ class Info {
       json['age'] ?? 0,
       json['weight'] ?? 0.0,
       json['name'] ?? '',
-      Description.fromJson(json['description']),
+      json['description'] == null
+          ? null
+          : Description.fromJson(json['description']),
     );
   }
 
@@ -27,39 +61,19 @@ class Description {
 
   Description(this.career, this.when);
 
-  // factory: named 생성자와 같음
+  /// named 생성자
+  /// json에는 아래 데이터가 들어옴
+  /// {
+  ///    "career": "developer",
+  ///    "when": "2010-01-01"
+  /// }
   factory Description.fromJson(Map<String, dynamic> json) {
-    return Description(
-      json['career'] ?? '',
-      json['when'] ?? '',
-      );
-  }
-
-  @override //generate>toString
-  String toString() {
-    return 'Description{career: $career, when: $when}';
-  }
-}
-
-class JsonModel {
-  //키마다 변수 추가
-  String id;
-  int number;
-  Info info;
-
-  JsonModel(this.id, this.number, this.info);
-
-  factory JsonModel.fromJson(Map<String, dynamic> json) {
-    return JsonModel(
-      json['id'] ?? '',
-      json['number'] ?? 0,
-      Info.fromJson(json['info']),
-    );
+    return Description(json['career'] ?? '', json['when'] ?? '');
   }
 
   @override
   String toString() {
-    return 'JsonModel{id: $id, number: $number, info: $info}';
+    return 'Description{career: $career, when: $when}';
   }
 }
 
@@ -70,10 +84,7 @@ class Framework {
   Framework(this.email, this.platform);
 
   factory Framework.fromJson(Map<String, dynamic> json) {
-    return Framework(
-      json['email'] ?? '',
-      json['platform'] ?? ''
-    );
+    return Framework(json['email'] ?? '', json['platform'] ?? '');
   }
 
   @override
