@@ -1,3 +1,4 @@
+import 'package:contact/screen/network/json_model.dart';
 import 'package:dio/dio.dart';
 // 멤버 목록 조회
 import 'package:flutter/material.dart';
@@ -28,6 +29,9 @@ class _MemberListScreenState extends State<MemberListScreen> {
         ElevatedButton(onPressed: () {
           dio2.get("").then((value) {
             print(value);
+            value.data;
+            var jsonModel = JsonModel.fromJson(value.data);
+            print(jsonModel);
           },);
         }, child: Text("Get JSON"))
       ],),
