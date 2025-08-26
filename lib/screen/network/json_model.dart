@@ -62,3 +62,22 @@ class JsonModel {
     return 'JsonModel{id: $id, number: $number, info: $info}';
   }
 }
+
+class Framework {
+  String email;
+  String platform;
+
+  Framework(this.email, this.platform);
+
+  factory Framework.fromJson(Map<String, dynamic> json) {
+    return Framework(
+      json['email'] ?? '',
+      json['platform'] ?? ''
+    );
+  }
+
+  @override
+  String toString() {
+    return 'Framework{email: $email, platform: $platform}';
+  }
+}
