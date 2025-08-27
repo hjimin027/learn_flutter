@@ -1,4 +1,5 @@
 import 'package:contact/screen/network/json_model.dart';
+import 'package:contact/screen/network/member_edit_screen.dart';
 import 'package:dio/dio.dart';
 // 멤버 목록 조회
 import 'package:flutter/material.dart';
@@ -60,14 +61,21 @@ class _MemberListScreenState extends State<MemberListScreen> {
             child: ListView.builder(
               padding: EdgeInsets.all(16),
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("이메일 : ${memberList[index].email}"),
-                      Text("설명 : ${memberList[index].description}"),
-                    ],
+                return InkWell(
+                  onTap: () { //onTap: 해당 위젯을 클릭할 수 있게 함
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return MemberEditScreen(email: memberList[index].email);
+                    },));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("이메일 : ${memberList[index].email}"),
+                        Text("설명 : ${memberList[index].description}"),
+                      ],
+                    ),
                   ),
                 );
               },
