@@ -99,34 +99,36 @@ class _NewsScreenState extends State<NewsScreen> {
                       : Image.network(model.urlToImage, fit: BoxFit.cover,),
                 ),
                 SizedBox(width: 16),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      articles[index].title,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        articles[index].title,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      articles[index].description,
-                      style: TextStyle(fontSize: 17),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      articles[index].author,
-                      style: TextStyle(fontSize: 14),
-                    ),
-                    Text(
-                      articles[index].publishedAt,
-                      style: TextStyle(fontSize: 14),
-                    ),
-                  ],
+                      Text(
+                        articles[index].description,
+                        style: TextStyle(fontSize: 17),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        articles[index].author,
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      Text(
+                        articles[index].publishedAt,
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
