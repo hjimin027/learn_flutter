@@ -7,4 +7,11 @@ class MyController extends GetxController {
   /// get: 불러온다는 키워드
   /// to: 변수명
   static MyController get to => Get.find<MyController>();
+
+  RxInt count = 0.obs;  //getx에서 제공하는 타입
+  // RxString name = "".obs;
+
+  void countUp(){
+    count.value++;
+  }
 }
