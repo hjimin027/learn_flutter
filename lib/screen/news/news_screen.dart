@@ -26,6 +26,7 @@ class _NewsScreenState extends State<NewsScreen> {
   int page = 1;
   List<Article> articles = [];
   int totalResults = 0;
+  ScrollController scrollController = ScrollController();
 
   Future<void> getData() async {
     if (!loading) {
@@ -71,6 +72,17 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   void initState() {
     getData();
+    scrollController.addListener(() { /// 페이징 처리
+      if (scrollController.position.atEdge) { //위든 아래든 끝에 도달했을 경우
+        bool isBottom =
+            scrollController.position.pixels == //현재 스크롤 위치
+            scrollController.position.maxScrollExtent;  //최대 위치
+        if (isBottom && totalResults > articles.length && !loading) { //article 다 나오지 않은 경우
+          page++;
+          getData();
+        }
+      }
+    },);
     super.initState();
   }
 
@@ -81,6 +93,7 @@ class _NewsScreenState extends State<NewsScreen> {
     return Scaffold(
       appBar: AppBar(title: Text("News")),
       body: ListView.builder(
+        controller: scrollController,
         padding: EdgeInsets.all(16),
         itemBuilder: (context, index) {
           var model = articles[index];
