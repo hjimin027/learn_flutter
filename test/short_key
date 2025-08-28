@@ -17,3 +17,5 @@ iter: for (var _o_ in _values_)
       mac: command + o
 
 함수에서 입력해야 할 데이터 정보: ctrl/cmd + p
+
+ctrl + alt + l : 줄바꿈 예쁘게

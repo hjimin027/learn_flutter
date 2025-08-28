@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+import 'article.dart';
+
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
 
@@ -9,7 +11,6 @@ class NewsScreen extends StatefulWidget {
 }
 
 class _NewsScreenState extends State<NewsScreen> {
-
   /// GET 방식
   /// https://newsapi.org/v2/everything?q=tesla&from=2025-07-28&sortBy=publishedAt&apiKey=_____
   /// https://newsapi.org => 도메인
@@ -23,6 +24,8 @@ class _NewsScreenState extends State<NewsScreen> {
 
   bool loading = true;
   int page = 1;
+  List<Article> articles = [];
+  int totalResults = 0;
 
   Future<void> getData() async {
     if (!loading) {
@@ -34,7 +37,7 @@ class _NewsScreenState extends State<NewsScreen> {
     // Url를 한 번에 코드에 집어넣으면, 오타났을 때 확인하기 힘듦
     // 이를 Uri로 분리해서 확인하기 쉽게
     Uri uri = Uri(
-      scheme: "https",  //맨 앞 // 앞에를 scheme라고 부름
+      scheme: "https", //맨 앞 // 앞에를 scheme라고 부름
       host: "newsapi.org", // scheme + host = domain
       path: "/v2/everything",
       queryParameters: {
@@ -43,11 +46,22 @@ class _NewsScreenState extends State<NewsScreen> {
         "sortBy": "publishedAt",
         "apiKey": "c44eaf331abf4043a2f3580ae590bd1e",
         "pageSize": "20",
-        "page": page.toString() // Int 값 바로 넣으면 오류 발생
-      }
+        "page": page.toString(), // Int 값 바로 넣으면 오류 발생
+      },
     );
 
-    var response = await Dio().get(uri.toString());  // 이렇게 하면 uri로 만든 링크가 다 붙여짐.
+    var response = await Dio().get(uri.toString()); // 이렇게 하면 uri로 만든 링크가 다 붙여짐.
+    /// 1. ArticleModel 생성
+    /// 2. List<ArticleModel> articles 생성
+
+    totalResults = response.data["totalResults"] ?? 0;
+
+    List<Article> tempList = (response.data["articles"] as Iterable).map((e) {
+      return Article.fromJson(e);
+    }).toList();
+    articles.addAll(tempList);
+
+    print(articles);
 
     loading = false;
     setState(() {});
@@ -60,6 +74,8 @@ class _NewsScreenState extends State<NewsScreen> {
     super.initState();
   }
 
+  //api를 사용할 때는, 데이터를 모델로 받아와서 리스트에 가져와야 함
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,32 +83,56 @@ class _NewsScreenState extends State<NewsScreen> {
       body: ListView.builder(
         padding: EdgeInsets.all(16),
         itemBuilder: (context, index) {
+          var model = articles[index];
+
           return Padding(
             padding: EdgeInsets.only(bottom: 24),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(width: 130, height: 130, color: Colors.grey),
+                Container(
+                  width: 130,
+                  height: 130,
+                  color: Colors.grey,
+                  child: model.urlToImage.isEmpty
+                      ? null
+                      : Image.network(model.urlToImage, fit: BoxFit.cover,),
+                ),
                 SizedBox(width: 16),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "타이틀",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      articles[index].title,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                       maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    Text("부제", style: TextStyle(fontSize: 17), maxLines: 2),
-                    Text("언론사명", style: TextStyle(fontSize: 14)),
-                    Text("날짜", style: TextStyle(fontSize: 14)),
+                    Text(
+                      articles[index].description,
+                      style: TextStyle(fontSize: 17),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      articles[index].author,
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    Text(
+                      articles[index].publishedAt,
+                      style: TextStyle(fontSize: 14),
+                    ),
                   ],
                 ),
               ],
             ),
           );
         },
-        itemCount: 10,
+        itemCount: articles.length,
       ),
     );
   }
