@@ -45,7 +45,7 @@ class _NewsScreenState extends State<NewsScreen> {
         "q": "google",
         "from": "2025-08-01",
         "sortBy": "publishedAt",
-        "apiKey": "c44eaf331abf4043a2f3580ae590bd1e",
+        "apiKey": "",
         "pageSize": "20",
         "page": page.toString(), // Int 값 바로 넣으면 오류 발생
       },
