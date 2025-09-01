@@ -1,5 +1,7 @@
 # Flutter(플러터) 교육과정2
 
+강사: 김진한 (해당 수업 깃허 [링크1](https://github.com/jinhan38/smwu_202508) [링크2](https://github.com/jinhan38/commerce_20250828))
+
 2025.08.18 ~ 2025.08.29
 
 숙명여자대학교 SW중심대학사업단 플러터 교육에서 학습한 내용입니다.
